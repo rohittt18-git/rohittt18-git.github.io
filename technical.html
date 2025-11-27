@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical | Portfolio</title>
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            color: white;
+            min-height: 100vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        /* 🎥 Background video styling */
+        
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            /* Keep it behind everything */
+            opacity: 1;
+            /* Fully visible video */
+        }
+        
+        section {
+            margin: 0;
+            /* Remove all outer gap */
+            padding: 20px 0;
+            /* Keep just a little inner padding */
+        }
+        
+        .section-title {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .about-me,
+        .education-section,
+        .skills-section {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            z-index: -1;
+        }
+        
+        .page-content {
+            padding: 40px 8%;
+            animation: fadeSlide 1s ease forwards;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        @keyframes fadeSlide {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        /* ===== BACK BUTTON ===== */
+        
+        .back-btn {
+            background: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease;
+            margin-bottom: 25px;
+        }
+        
+        .back-btn:hover {
+            background: #00ffff;
+            color: black;
+        }
+        /* ===== HEADER ===== */
+        
+        .header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            background: url("techpro.jpg") center/cover no-repeat;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transition: transform 0.4s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+        
+        .intro-text h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #00ffff;
+        }
+        
+        .intro-text p {
+            font-family: cursive;
+        }
+        /* ===== SECTION HEADINGS ===== */
+        
+        h2.section-title {
+            font-size: 1.8em;
+            border-left: 5px solid #00ffff;
+            padding-left: 12px;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-shadow: none;
+            /* removed light effect */
+        }
+        
+        h3.sub-title {
+            text-shadow: none;
+            /* removed light effect for subheadings */
+        }
+        
+        section {
+            margin-bottom: 10px;
+        }
+        /* ===== EDUCATION ===== */
+        
+        .education-section {
+            padding: 60px 0;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .education-section .section-title {
+            font-size: 2.2em;
+            color: #00ffff;
+            margin-bottom: 40px;
+            text-shadow: none;
+            /* removed glow */
+            letter-spacing: 1px;
+        }
+        
+        .education-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 35px;
+            position: relative;
+        }
+        
+        .edu-card {
+            width: 75%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .edu-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+        }
+        
+        .edu-card:nth-child(even) {
+            align-self: flex-start;
+            animation: slideInLeft 0.8s ease both;
+        }
+        
+        .edu-card:nth-child(odd) {
+            align-self: flex-end;
+            animation: slideInRight 0.8s ease both;
+        }
+        
+        .edu-content {
+            padding: 25px 30px;
+            text-align: left;
+        }
+        
+        .edu-content h3 {
+            font-size: 1.3em;
+            color: #00ffff;
+            margin-bottom: 8px;
+        }
+        
+        .edu-content span {
+            display: block;
+            font-size: 0.95em;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        
+        .edu-content p {
+            font-size: 0.95em;
+            color: #eee;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        /* ===== Animation Effects ===== */
+        
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        /* ===== SKILLS ===== */
+        
+        #skills {
+            color: white;
+            padding: 50px 20px;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: left;
+            text-shadow: none;
+            /* no light effect */
+        }
+        
+        .sub-title {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #00aaff;
+            text-align: center;
+            text-shadow: none;
+            /* no glow */
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .skill-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 15px;
+            width: 130px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .skill-box:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        .skill-box img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .skill-box p {
+            font-size: 1em;
+            margin: 0;
+        }
+        /* ===== PROJECTS ===== */
+        
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, background 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .project-card h3 {
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+        /* ===== MODAL ===== */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .modal-content {
+            background: white;
+            color: black;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 0.4s ease;
+        }
+        /* ===== ABOUT ME ===== */
+        
+        .about-me {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            line-height: 1.8;
+            font-size: 1.05em;
+            transition: transform 0.3s ease, background 0.3s ease;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .about-me:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #00aaaa;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #007777;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 50px;
+        }
+        /* For extra smooth scrolling experience */
+        
+        body {
+            scroll-behavior: smooth;
+            transition: all 0.5s ease-in-out;
+        }
+        /* Add a custom scrollbar (optional but looks premium) */
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.5);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 255, 0.8);
+        }
+        /* ===== NAVIGATION BAR ===== */
+        
+        .navbar {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            border-radius: 40px;
+            padding: 10px 25px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        .navbar:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+        }
+        
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .navbar a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+        /* Active link effect (optional) */
+        
+        .navbar a.active {
+            color: white;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        /* For smaller screens */
+        
+        @media (max-width: 768px) {
+            .navbar {
+                right: 20px;
+                padding: 8px 15px;
+            }
+            .navbar ul {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .navbar a {
+                font-size: 14px;
+            }
+        }
+        /* Animated modal background */
+        /* Make the video fill the modal background */
+        
+        .modal-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            /* stay behind text */
+        }
+        /* Overlay to make text readable */
+        
+        .modal-content {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+            padding: 30px;
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+        /* Add semi-transparent dark layer over the video */
+        
+        .modal-content::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            /* dark overlay */
+            z-index: 1;
+        }
+        /* Ensure actual content stays on top of overlay */
+        
+        .modal-content>*:not(video) {
+            position: relative;
+            z-index: 2;
+        }
+        /* Improve heading and paragraph visibility */
+        
+        #modalTitle {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+        
+        #modalDescription {
+            color: #e0e0e0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <video autoplay muted loop playsinline id="bgVideo">
+  <source src="3129671-hd_1920_1080_30fps.mp4" type="video/mp4">
+</video>
+
+    <div class="overlay"></div>
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="page-content">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+
+        <div class="header">
+            <div class="profile-pic"></div>
+            <div class="intro-text">
+                <h1>Rohit Kamati</h1>
+                <p>Passionate developer with a love for building creative, interactive, and functional web and ML projects.</p>
+            </div>
+        </div>
+        <!-- ABOUT ME -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-me">
+                <p>
+                    I am an aspiring full-stack and machine learning developer with experience in Python and C, along with front-end skills and basic backend knowledge. I enjoy building interactive applications and working with machine learning models on practical projects.
+                    I like learning through hands-on experience and aim to grow my skills while contributing to meaningful projects.
+                </p>
+            </div>
+        </section>
+        <section id="education" class="education-section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-container">
+                <div class="edu-card">
+                    <div class="edu-content">
+                        <h3>Bachelor of Engineering in Artificial Intelligence and Data Science</h3>
+                        <span>2022 - 2026 | S.G. Balekundri Institute of Technology</span>
+                        <p>
+                            Currently pursuing a degree in AI & Data Science, focusing on machine learning, data analytics, and full-stack development with practical project experience.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-content">
+                        <h3>Pre-University (Science Stream)</h3>
+                        <span>2020 - 2022 | SGV Mahesh PU College</span>
+                        <p>
+                            Studied core science subjects including Physics, Chemistry, and Mathematics with excellent academic performance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-content">
+                        <h3>SSLC (Secondary School Leaving Certificate)</h3>
+                        <span>2020 | Shri Shivayogi Kannada Medium School</span>
+                        <p>
+                            Completed secondary education with distinction, laying the foundation for technical and analytical growth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <h2 class="section-title">My Skills</h2>
+
+            <!-- Languages & Knowledge -->
+            <h3 class="sub-title">Languages & Knowledge</h3>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    <p>Python</p>
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+                    <p>C</p>
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                    <p>HTML</p>
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2103/2103832.png" alt="Machine Learning">
+                    <p>Machine Learning</p>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <h3 class="sub-title">Tools</h3>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
+                    <p>VS Code</p>
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter Notebook">
+                    <p>Jupyter Notebook</p>
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Colab">
+                    <p>Google Colab</p>
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="Expo Go">
+                    <p>Expo Go</p>
+                </div>
+            </div>
+
+            <!-- Domains -->
+            <h3 class="sub-title">Domains</h3>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2103/2103832.png" alt="Machine Learning">
+                    <p>Machine Learning</p>
+                </div>
+                <div class="skill-box">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Full Stack">
+                    <p>Full Stack</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-container">
+                <div class="project-card" onclick="openModal(0)">
+                    <img src="projects/tttrrr.jpg" alt="Traffic Sign Recognition" />
+                    <h3>Traffic Sign Recognition</h3>
+                </div>
+                <div class="project-card" onclick="openModal(1)">
+                    <img src="projects/doucmorphai.jpg" alt="Documorph AI" />
+                    <h3>Documorph AI</h3>
+                </div>
+                <div class="project-card" onclick="openModal(2)">
+                    <img src="projects/public.jpg" alt="Smart Travel Tracker App" />
+                    <h3>Smart Travel Tracker App</h3>
+                </div>
+                <div class="project-card" onclick="openModal(3)">
+                    <img src="projects/weather.jpg" alt="Weather App" />
+                    <h3>Weather Forecast App</h3>
+                </div>
+                <div class="project-card" onclick="openModal(4)">
+                    <img src="projects/Protfolio.jpg" alt="Portfolio Website" />
+                    <h3>Personal Portfolio</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <video autoplay muted loop class="modal-bg-video">
+  <source src="12024715_1920_1080_30fps.mp4" type="video/mp4">
+</video>
+
+            <img id="modalImage" src="" alt="" />
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+
+            <!-- Download PPT Button (hidden until project clicked) -->
+            <a id="pptDownload" href="#" download class="download-btn">📥 Download PPT</a>
+            <div id="githubSection" style="text-align:center; margin-top:12px;">
+                <a id="githubLink" href="#" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:rgba(0,255,255,0.1);
+            padding:8px 16px; border-radius:25px; text-decoration:none; transition:0.3s ease;
+            border:1px solid rgba(0,255,255,0.4);">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub" width="20" height="20">
+                    <span style="color:#00ffff; font-size:15px; font-weight:500;">View on GitHub</span>
+                </a>
+            </div>
+
+
+            <style>
+                a:hover {
+                    background: rgba(0, 255, 255, 0.2);
+                    transform: scale(1.05);
+                }
+            </style>
+
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        const projects = [{
+            title: "Traffic Sign Recognition",
+            image: "projects/tttrrr.jpg",
+            description: "The Traffic Sign Recognition project is designed to improve road and driver safety using Artificial Intelligence. The system uses a YOLO (You Only Look Once) model to detect and recognize traffic signs from real-time video or images. A camera mounted on a vehicle captures the roadside signs, and the trained model identifies them accurately.",
+            ppt: "ppts/Trafic.pdf.pdf",
+            github: "https://github.com/rohittt18-git/Real-Time-Traffic-Sign-Recognition-ADAS"
+        }, {
+            title: "Documorph AI",
+            image: "projects/doucmorphai.jpg",
+            description: "DocuMorph AI is an intelligent document formatting tool developed to automatically convert unformatted or raw text into properly structured and styled documents. It saves users from spending hours manually adjusting margins, headings, spacing, and alignment — especially in academic or professional reports. Our system uses AI-powered formatting combined with smart templates to ensure every document follows standards.",
+            ppt: "ppts/documorph.pdf",
+            github: "https://github.com/yourusername/documorph-ai"
+        }, {
+            title: "Smart Travel Tracker App",
+            image: "projects/public.jpg",
+            description: "A mobile-based travel tracking application that automatically captures trip details such as start and end time, travel mode, duration, route, and distance using GPS. It allows users to monitor their journeys in real-time while securely storing trip data in a central database for analysis and transportation planning.",
+            ppt: "ppts/hospital_management_system.pptx",
+            github: "https://github.com/yourusername/hospital-management"
+        }, {
+            title: "Weather Forecast App",
+            image: "projects/weather.jpg",
+            description: "A responsive web app that displays real-time weather data using API integration and predictive analytics.",
+            ppt: "ppts/weather_forecast_app.pptx",
+            github: "https://github.com/yourusername/weather-app"
+        }, {
+            title: "Personal Portfolio",
+            image: "projects/Protfolio.jpg",
+            description: "A responsive personal portfolio showcasing my skills, projects, and experience using HTML, CSS, and JS.",
+            ppt: "ppts/personal_portfolio.pptx",
+            github: "https://github.com/yourusername/portfolio"
+        }];
+
+        function openModal(index) {
+            const modal = document.getElementById("projectModal");
+            const data = projects[index];
+
+            document.getElementById("modalImage").src = data.image;
+            document.getElementById("modalTitle").innerText = data.title;
+            document.getElementById("modalDescription").innerText = data.description;
+
+            // set ppt download link
+            const pptLink = document.getElementById("pptDownload");
+            pptLink.href = data.ppt;
+            pptLink.style.display = "inline-block";
+
+            modal.style.display = "flex";
+            modal.style.animation = "fadeIn 0.4s ease";
+            // set github link
+            const githubLink = document.getElementById("githubLink");
+            githubLink.href = data.github;
+
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("projectModal");
+            modal.style.animation = "fadeOut 0.3s ease";
+            setTimeout(() => (modal.style.display = "none"), 250);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("projectModal");
+            if (event.target === modal) closeModal();
+        };
+    </script>
+
+
+</body>
+
+</html>

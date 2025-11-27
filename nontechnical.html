@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Non-Technical | Portfolio</title>
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            color: white;
+            min-height: 100vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        /* 🎥 Background video styling */
+        
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            /* Keep it behind everything */
+            opacity: 1;
+            /* Fully visible video */
+        }
+        
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            z-index: -1;
+        }
+        
+        .page-content {
+            padding: 40px 8%;
+            animation: fadeSlide 1s ease forwards;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        @keyframes fadeSlide {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        /* ===== BACK BUTTON ===== */
+        
+        .back-btn {
+            background: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease;
+            margin-bottom: 25px;
+        }
+        
+        .back-btn:hover {
+            background: #00ffff;
+            color: black;
+        }
+        /* ===== HEADER ===== */
+        
+        .header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            background: url("ooo.jpg") center/cover no-repeat;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transition: transform 0.4s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+        
+        .intro-text h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #00ffff;
+        }
+        
+        .intro-text p {
+            font-family: cursive;
+        }
+        /* ===== ABOUT ME ===== */
+        
+        .about-me {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            line-height: 1.8;
+            font-size: 1.07em;
+            font-family: 'Times New Roman', Times, serif;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .about-me:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+        
+        h2.section-title {
+            font-size: 1.8em;
+            border-left: 5px solid #00ffff;
+            padding-left: 12px;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        /* ===== HOBBIES ===== */
+        
+        .hobby-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px;
+            margin-top: 16px;
+        }
+        
+        .hobby-card {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 18px;
+            width: 150px;
+            text-align: center;
+            box-shadow: 0 0 18px rgba(0, 255, 255, 0.08);
+            transition: transform 0.35s cubic-bezier(.2, .9, .3, 1), box-shadow 0.35s ease;
+            backdrop-filter: blur(6px);
+        }
+        
+        .hobby-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.25);
+        }
+        
+        .hobby-icon {
+            width: 66px;
+            height: 66px;
+            display: inline-block;
+            margin-bottom: 12px;
+            fill: none;
+            stroke: #00ffff;
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .hobby-card:hover .hobby-icon {
+            stroke-width: 1.6;
+            filter: drop-shadow(0 6px 18px rgba(0, 255, 255, 0.22));
+        }
+        
+        .hobby-card p {
+            font-size: 1.02em;
+            color: #e8ffff;
+            font-weight: 600;
+            margin: 0;
+        }
+        /* ===== TOOLS & KNOWLEDGE ===== */
+        
+        .tools-knowledge {
+            margin-top: 70px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+        
+        .tools-knowledge .section-title {
+            font-size: 1.8em;
+            border-left: 5px solid #00ffff;
+            padding-left: 12px;
+            color: #00ffff;
+            margin-bottom: 40px;
+            text-align: left;
+            display: block;
+            margin-left: 0;
+        }
+        
+        .tool-category {
+            margin-bottom: 60px;
+        }
+        
+        .tool-category h3 {
+            color: #00eaff;
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .tool-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            width: 160px;
+            padding: 20px 15px;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+        }
+        
+        .tool-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .tool-card img:hover,
+        .tool-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .tool-card p {
+            margin: 0;
+            color: #00ffff;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        /* ===== GALLERY ===== */
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        /* ===== SCROLLBAR ===== */
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 255, 0.8);
+        }
+        /* my videoss*/
+        /* ===== My Captures Section ===== */
+        
+        .my-captures {
+            margin-top: 80px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+        
+        .capture-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 0 8%;
+        }
+        
+        .capture-card {
+            width: 320px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .capture-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+        }
+        
+        .capture-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        .capture-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.4s ease;
+        }
+        
+        .capture-card:hover video {
+            transform: scale(1.05);
+        }
+        /* ===== My Project Videos Section ===== */
+        
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            justify-items: center;
+        }
+        
+        .video-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 90%;
+            max-width: 500px;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
+        }
+        
+        .video-thumb {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+        
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .video-thumb:hover img {
+            transform: scale(1.08);
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 255, 255, 0.8);
+            color: black;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-thumb:hover .play-overlay {
+            opacity: 1;
+        }
+        
+        .video-caption {
+            font-weight: 600;
+            font-size: 1.1em;
+            padding: 14px;
+            color: #e6ffff;
+        }
+        /* --- Achievements Section --- */
+        
+        #achievements {
+            padding: 60px 0;
+        }
+        
+        #achievements .section-title {
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #00eaff;
+        }
+        
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        /* --- Card Flip Animation --- */
+        
+        .achievement-card {
+            perspective: 1000px;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        
+        .achievement-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            backface-visibility: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        }
+        /* ===== CONNECT WITH ME SECTION ===== */
+        
+        #connect {
+            padding: 50px 0;
+        }
+        
+        #connect .section-title {
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #00eaff;
+        }
+        
+        .connect-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(0, 234, 255, 0.2);
+            padding: 40px;
+        }
+        
+        .connect-form {
+            flex: 1 1 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .input-group label {
+            color: #00eaff;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.3s, background 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-color: #00eaff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(90deg, #00eaff, #007aff);
+            color: #fff;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #00ffff, #0055ff);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+        /* Right Side Illustration */
+        
+        .connect-illustration {
+            flex: 1 1 300px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .connect-illustration img {
+            width: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px #00eaff);
+        }
+        
+        .connect-illustration p {
+            color: #cceeff;
+            font-size: 1.1rem;
+        }
+        /* --- FRONT SIDE --- */
+        
+        .card-front {
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .card-front img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75%;
+            object-fit: cover;
+        }
+        
+        .card-front h3 {
+            position: relative;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            width: 100%;
+            color: #00eaff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        /* --- BACK SIDE --- */
+        
+        .card-back {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            transform: rotateY(180deg);
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .card-back h3 {
+            color: #00eaff;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .card-back p {
+            font-size: 0.95rem;
+            margin: 4px 0;
+            color: #e0e0e0;
+        }
+        /* ===== NAVIGATION BAR ===== */
+        
+        .navbar {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            border-radius: 40px;
+            padding: 10px 25px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        .navbar:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+        }
+        
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        section {
+            margin-bottom: 25px;
+        }
+        
+        .navbar a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+        /* Active link effect (optional) */
+        
+        .navbar a.active {
+            color: white;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        /* For smaller screens */
+        
+        @media (max-width: 768px) {
+            .navbar {
+                right: 20px;
+                padding: 8px 15px;
+            }
+            .navbar ul {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .navbar a {
+                font-size: 14px;
+            }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        section {
+            scroll-margin-top: 100px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <video autoplay muted loop playsinline id="bgVideo">
+  <source src="3129671-hd_1920_1080_30fps.mp4" type="video/mp4">
+</video>
+    <div class="overlay"></div>
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#My Interests">My Interests</a></li>
+            <li><a href="#Tools">Tools</a></li>
+            <li><a href="#Myclicks">Myclicks</a></li>
+            <li><a href="#MyCaptures">MyCaptures</a></li>
+            <li><a href="#Achievements">Achievements</a></li>
+            <li><a href="#ConnectWme">ConnectWme</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-content">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+
+        <div class="header">
+            <div class="profile-pic"></div>
+            <div class="intro-text">
+                <h1>Rohit Kamati</h1>
+                <p>Passionate creator with a love for capturing, editing, and telling engaging visual stories.</p>
+            </div>
+        </div>
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-me">
+                <p>
+                    I am Rohit K. Kamati, with a strong interest in creative media and content creation. I have experience in videography, photography, and video editing, and I enjoy capturing moments effectively and telling engaging stories.
+                </p>
+            </div>
+        </section>
+
+        <section id="My Interests">
+            <h2 class="section-title">My Interests & Hobbies</h2>
+            <p style="font-size: 1.05em; color: rgba(255,255,255,0.9); margin-bottom: 18px;">
+                Here are a few of my passions beyond technology — the things that help me stay creative and inspired.
+            </p>
+
+            <div class="hobby-container">
+                <div class="hobby-card">
+                    <svg class="hobby-icon" viewBox="0 0 24 24"><path d="M4 7h3l1.5-2h6L17 7h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm6 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+                    <p>Photography</p>
+                </div>
+                <div class="hobby-card">
+                    <svg class="hobby-icon" viewBox="0 0 24 24"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 3v-11l-4 3z"/></svg>
+                    <p>Videography</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="Tools" class="tools-knowledge">
+            <h2 class="section-title">Tools & Knowledge</h2>
+
+            <div class="tool-category">
+                <h3>📸 Photography Tools</h3>
+                <div class="tool-grid">
+                    <div class="tool-card"><img src="nontechtools/sanpseed.png" alt="Snapseed">
+                        <p>Snapseed</p>
+                    </div>
+                    <div class="tool-card"><img src="nontechtools/piskart.png" alt="PicsArt">
+                        <p>PicsArt</p>
+                    </div>
+                    <div class="tool-card"><img src="nontechtools/lightroom.png" alt="Lightroom">
+                        <p>Lightroom</p>
+                    </div>
+                    <div class="tool-card"><img src="nontechtools/photoshop.png" alt="Photoshop">
+                        <p>Photoshop</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3>🎬 Videography & Editing Tools</h3>
+                <div class="tool-grid">
+                    <div class="tool-card"><img src="nontechtools/capcut.png" alt="CapCut">
+                        <p>CapCut</p>
+                    </div>
+                    <div class="tool-card"><img src="nontechtools/vn.png" alt="VN Editor">
+                        <p>VN Editor</p>
+                    </div>
+                    <div class="tool-card"><img src="nontechtools/kinemaster.png" alt="KineMaster">
+                        <p>KineMaster</p>
+                    </div>
+                    <div class="tool-card"><img src="nontechtools/premiampro.png" alt="Premiere Pro">
+                        <p>Premiere Pro</p>
+                    </div>
+                    <div class="tool-card"><img src="nontechtools/alightmotion.png" alt="Alight Motion">
+                        <p>Alight Motion</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Myclicks">
+            <h2 class="section-title">My Clicks</h2>
+        </section>
+
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Original set -->
+                <img src="my clicks/d32e0c00a8a2070ce489e68db8e16fa8.jpg" alt="">
+                <img src="my clicks/IMG_2788.jpg" alt="">
+                <img src="my clicks/IMG_4369.jpg" alt="">
+                <img src="my clicks/IMG_8614.jpg" alt="">
+                <img src="my clicks/IMG_8283.jpg" alt="">
+                <img src="my clicks/IMG_20251028_115945.jpg" alt="">
+                <img src="my clicks/IMG_9368 (1).jpg" alt="">
+                <img src="my clicks/IMG_20251127_205239.jpg" alt=" ">
+
+                <!-- Duplicate set for smooth looping -->
+                <img src="my clicks/d32e0c00a8a2070ce489e68db8e16fa8.jpg " alt=" ">
+                <img src="my clicks/IMG_2788.jpg " alt=" ">
+                <img src="my clicks/IMG_4369.jpg " alt=" ">
+                <img src="my clicks/IMG_8614.jpg " alt=" ">
+                <img src="my clicks/IMG_8283.jpg " alt=" ">
+                <img src="my clicks/IMG_20251028_115945.jpg " alt=" ">
+                <img src="my clicks/IMG_9368 (1).jpg " alt=" ">
+                <img src="my clicks/IMG_20251127_205239.jpg " alt=" ">
+            </div>
+        </div>
+
+        <style>
+            .carousel-container {
+                width: 90%;
+                margin: 40px auto 70px;
+                overflow: hidden;
+                border-radius: 20px;
+                box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+                background: rgba(255, 255, 255, 0.02);
+                position: relative;
+            }
+            /* ✅ Double the track to make smooth infinite scroll */
+            
+            .carousel-track {
+                display: flex;
+                gap: 25px;
+                animation: scroll 25s linear infinite;
+            }
+            
+            .carousel-track::after {
+                content: " ";
+                display: flex;
+                width: 100%;
+            }
+            
+            .carousel-track img {
+                width: 400px;
+                height: 260px;
+                object-fit: cover;
+                border-radius: 15px;
+                transition: transform 0.4s ease;
+            }
+            /* Hover pause effect */
+            
+            .carousel-container:hover .carousel-track {
+                animation-play-state: paused;
+            }
+            /* ✅ Keyframe adjusted to match full image width (for 8–9 images) */
+            
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-200%);
+                    /* Scrolls all images before looping */
+                }
+            }
+            /* Responsive */
+            
+            @media (max-width: 900px) {
+                .carousel-track img {
+                    width: 300px;
+                    height: 200px;
+                }
+            }
+            
+            @media (max-width: 600px) {
+                .carousel-track img {
+                    width: 250px;
+                    height: 160px;
+                }
+            }
+        </style>
+
+        <!-- 🎥 My Captures Section -->
+        <!-- 🎥 My Captures Section -->
+        <section id="MyCaptures " class="my-captures ">
+            <h2 class="section-title ">My Captures</h2>
+
+            <div class="capture-gallery ">
+                <div class="capture-card ">
+                    <video autoplay muted loop playsinline>
+        <source src="mycaptures/lv_0_20250613203948.mp4 " type="video/mp4 ">
+      </video>
+                </div>
+                <div class="capture-card ">
+                    <video autoplay muted loop playsinline>
+        <source src="mycaptures/lv_0_20251028201951.mp4 " type="video/mp4 ">
+      </video>
+                </div>
+                <div class="capture-card ">
+                    <video autoplay muted loop playsinline>
+        <source src="mycaptures/video_20251028_115211_edit.mp4 " type="video/mp4 ">
+      </video>
+                </div>
+                <div class="capture-card ">
+                    <video autoplay muted loop playsinline>
+        <source src="mycaptures/video_20251028_125755_edit.mp4 " type="video/mp4 ">
+      </video>
+                    </video>
+                </div>
+                <div class="capture-card ">
+                    <video autoplay muted loop playsinline>
+        <source src="mycaptures/video_20251028_201220_edit.mp4 " type="video/mp4 ">
+      </video>
+                    </video>
+                </div>
+                <div class="capture-card ">
+                    <video autoplay muted loop playsinline>
+        <source src="videos/capture4.mp4 " type="video/mp4 ">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 🚀 My Project Videos Section -->
+        <section id="myVideos ">
+            <h2 class="section-title ">My Project Videos</h2>
+            <div class="video-gallery ">
+
+                <!-- Video 1 -->
+                <a href="https://youtu.be/4ZcbDjgqFE4?si=VDz2fIf-xWHbFs1Q " target="_blank " class="video-card ">
+                    <div class="video-thumb ">
+                        <img src="my clicks/Picsart_25-07-12_09-42-01-917.jpg " alt="Video 1 Thumbnail ">
+                        <div class="play-overlay ">▶</div>
+                    </div>
+                    <p class="video-caption ">Our Village Fair</p>
+                </a>
+
+                <!-- Video 2 -->
+                <a href="https://youtu.be/I2RZ12E8XWg?si=EGObzoTo7O1DfLbQ " target="_blank " class="video-card ">
+                    <div class="video-thumb ">
+                        <img src="my clicks/Picsart_25-07-17_20-08-33-818.png " alt="Video 2 Thumbnail ">
+                        <div class="play-overlay ">▶</div>
+                    </div>
+                    <p class="video-caption ">Travelling Video</p>
+                </a>
+
+                <!-- Video 3 -->
+                <a href="https://youtu.be/z-DD3guOogQ?si=D7o75RxoCMZ3oVkO" target="_blank " class="video-card ">
+                    <div class="video-thumb ">
+                        <img src="Picsart_25-11-23_10-06-45-252.png " alt="Video 3 Thumbnail ">
+                        <div class="play-overlay ">▶</div>
+                    </div>
+                    <p class="video-caption ">ಕನ್ನಡ ಹಬ್ಬ / Collage Project</p>
+                </a>
+
+                <!-- Add more videos below -->
+            </div>
+        </section>
+
+        <!-- ===== ACHIEVEMENTS SECTION ===== -->
+        <section id="Achievements ">
+            <h2 class="section-title ">Achievements</h2>
+            <div class="achievement-grid ">
+
+                <div class="achievement-card ">
+                    <div class="card-inner ">
+                        <div class="card-front ">
+                            <img src="IMG_20251031_000744.jpg " alt="Reel Making ">
+                            <h3>3rd Prize — Reel Rhapsody</h3>
+                        </div>
+                        <div class="card-back ">
+                            <h3>3rd Prize — Reel Rhapsody</h3>
+                            <p style="font-family: cursive; ">Thrilled to have secured 3rd prize in the Reel Rhapsody(Reel-Making) event at INVENTO 2025 - National Level Fest hosted by KLE Technological University.</p>
+                            <p><strong>Event:</strong> INVENTO 2025</p>
+                            <p><strong>Year:</strong> 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-card ">
+                    <div class="card-inner ">
+                        <div class="card-front ">
+                            <img src="IMG_20251030_235003.jpg " alt="Short Film ">
+                            <h3>2nd Prize — Feel It Reel It</h3>
+                        </div>
+                        <div class="card-back ">
+                            <h3>2nd Prize — Feel It Reel It</h3>
+                            <p style="font-family: cursive;">Secured 2nd place in the "FEEL IT, REEL IT -Reel Making Competition" organized bY S G Balekundri Intitute Of Technology..</p>
+                            <p><strong>Event:</strong> FilmFest 2023</p>
+                            <p><strong>Year:</strong> 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-card ">
+                    <div class="card-inner ">
+                        <div class="card-front ">
+                            <img src="f193aed3f6dcae5a269568c07049497a.jpg " alt="Creative Event ">
+                            <h3>1st Prize - Tales Of Frames</h3>
+                        </div>
+                        <div class="card-back ">
+                            <h3>1st Prize - Tales Of Frames</h3>
+                            <p style="font-family: cursive; ">Secured 1st place in the Tales of Framesn(Reel Making) Competition at SAMVEEKSHANA-2025 a National Level Tech Fest Hosted by S G Balekundri Intitute Of Technology.</p>
+                            <p><strong>Event:</strong> SAMVEEKSHANA-2025</p>
+                            <p><strong>Year:</strong> 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievement-card ">
+                    <div class="card-inner ">
+                        <div class="card-front ">
+                            <img src="IMG_20251031_001603.jpg " alt="Best Director ">
+                            <h3>Best Director Award</h3>
+                        </div>
+                        <div class="card-back ">
+                            <h3>Best Director Award</h3>
+                            <p>Awarded for exceptional direction in short film production.</p>
+                            <p><strong>Event:</strong> CineSpark 2024</p>
+                            <p><strong>Year:</strong> 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section id="aboutAchievements " style="text-align:center; margin-top:40px; margin-bottom:20px; ">
+            <h2 style="color:#00ffff; font-size:1.8rem; ">Achievements That Inspire My Journey</h2>
+            <p style="color:#ddd; font-size:1.1rem; max-width:850px; margin:auto; line-height:1.6; font-family: cursive; ">
+                Each achievement is more than just a moment of success — it’s a reminder of the dedication, creativity, and teamwork that went into it. From directing award-winning short films to leading innovative events, every recognition has strengthened my belief
+                in continuous learning and exploring new possibilities. These milestones reflect not just what I’ve accomplished, but also the passion that drives me forward in every project I take on.
+            </p>
+        </section>
+
+
+        <!-- ===== CONNECT WITH ME ===== -->
+        <section id="ConnectWme ">
+            <h2 class="section-title ">Connect With Me</h2>
+            <div class="connect-container ">
+                <form id="connectForm " class="connect-form ">
+                    <div class="input-group ">
+                        <label for="name ">Full Name</label>
+                        <input type="text " id="name " name="name " placeholder="Enter your full name " required>
+                    </div>
+
+                    <div class="input-group ">
+                        <label for="email ">Email Address</label>
+                        <input type="email " id="email " name="email " placeholder="Enter your email " required>
+                    </div>
+
+                    <div class="input-group ">
+                        <label for="phone ">Phone Number</label>
+                        <input type="tel " id="phone " name="phone " placeholder="Enter your phone number " required>
+                    </div>
+
+                    <button type="submit " class="submit-btn ">Send</button>
+                </form>
+                <div class="connect-illustration ">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png " alt="Connect Icon ">
+                    <p>Let’s collaborate or stay in touch!</p>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.getElementById("connectForm ").addEventListener("submit ", async(e) => {
+                e.preventDefault();
+
+                const formData = {
+                    name: document.getElementById("name ").value,
+                    email: document.getElementById("email ").value,
+                    phone: document.getElementById("phone ").value
+                };
+
+                try {
+                    const response = await fetch("http://127.0.0.1:5000/send_email ", {
+                        method: "POST ",
+                        headers: {
+                            "Content-Type ": "application/json "
+                        },
+                        mode: "cors ", // ✅ Important for local HTML
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (response.ok) {
+                        alert("✅ Your details have been sent successfully! ");
+                        document.getElementById("connectForm ").reset();
+                    } else {
+                        alert("❌ Something went wrong. Please try again. ");
+                    }
+                } catch (error) {
+                    alert("⚠️ Error sending form: " + error.message);
+                }
+            });
+        </script>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "index.html ";
+        }
+    </script>
+</body>
+
+</html>
